@@ -38,7 +38,7 @@
                     <td><form action="/deleteOrder/" method="POST">
                         {% csrf_token %}
                         <input type="text" name="order_id" id="order_id" value="{{pizza.id}}">
-                        <button type="submit"><i class="fas fa-trash-alt"></i> Delete</button>
+                        <button type="submit"><i class="fas fa-trash-alt"></i> Excluir</button>
                         </form>
                     </td>
                 </tr>
@@ -51,7 +51,7 @@
                 <th>
                     <form action="/deleteAllOrder/" method="POST">
                     {% csrf_token %}
-                        <button type="submit"><i class="fas fa-trash-alt"></i> Delete All</button>
+                        <button type="submit"><i class="fas fa-trash-alt"></i> Excluir Todos</button>
                     </form>
                 </th>
             </tr>
@@ -96,7 +96,7 @@
         </form>
     {% endif %}
 {% else %}
-<h4>Ainda não foi feito nenhum pedido! Por favor, faça ao menos um. <a href="/menu/">Order</a></h4>
+<h4>Ainda não foi feito nenhum pedido! Por favor, faça ao menos um. <a href="/menu/">Pedir agora</a></h4>
 {% endif %}
 </section>
 {% endblock body %}
