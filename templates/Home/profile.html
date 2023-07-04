@@ -12,8 +12,8 @@
             </div>
         </div> 
         <div class="details">
-                <h4>{% if request.user.first_name %}{{request.user.first_name}} {{request.user.last_name}} (Full Name){% endif %}</h4>
-                <h4>{% if request.user.username %}{{request.user.username}} (Username){% endif %}</h4>
+                <h4>{% if request.user.first_name %}{{request.user.first_name}} {{request.user.last_name}} (Nome Completo){% endif %}</h4>
+                <h4>{% if request.user.username %}{{request.user.username}} (nome de usuário){% endif %}</h4>
                 <h4>{% if request.user.email %}{{request.user.email}} (Email){% endif %}</h4>
                 <form action="/logout/" method="POST">
                 {% csrf_token %}

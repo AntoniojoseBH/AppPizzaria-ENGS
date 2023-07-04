@@ -5,11 +5,11 @@
         {% if orders %}
             {% for order in orders %}
                 <div class="profile__order">
-                    <h1>{{order.User.username}} (username)</h1>
+                    <h1>{{order.User.username}} (nome de usuário)</h1>
                     <h1>{{order.User.email}} (email)</h1>
                     {% for a in address %}
                         {% if a.User.id == order.User.id %}
-                            <h1>{{a.address}} (address)</h1>
+                            <h1>{{a.address}} (endereço)</h1>
                         {% endif %}
                     {% endfor %}
                 </div>
