@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block active1 %}active{% endblock active1 %}
+{% block body %}
+<section id="section__one">
+    <h4>Bem-vindo</h4>
+    <h1>Nós preapramos a sua</h1>
+    <h1>Receita de Pizza desejada</h1>
+    <div class="btns">
+        <a href="/orders/">Ver os seus pedidos</a>
+        <a href="/menu/">Ver menu</a>
+    </div>
+</section>
+<section id="section__two">
+    <div class="outter__box__one box">
+        <div class="inner__box__one">
+            <div class="icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="text">
+                <h3>+55 (31) 3319 6722</h3>
+            </div>
+        </div>
+        <div class="inner__box__one">
+            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="text">
+                <h3>Avenida Amazonas 7675 - Nova Gameleira </h3>
+                <p>Belo Horizonte - MG</p>
+            </div>
+        </div>
+        <div class="inner__box__one">
+            <div class="icon"><i class="far fa-clock"></i></div>
+            <div class="text">
+                <h3>Aberto de terça a domingo</h3>
+                <p>16:00 - 23:00</p>
+            </div>
+        </div>
+    </div>
+    <div class="outter__box__two box">
+        <div class="inner__box__two">
+            <div class="social__icons">
+                <a href="#">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}

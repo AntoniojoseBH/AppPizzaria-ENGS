@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Menu{% endblock title %}
+{% block active2 %}active{% endblock active2 %}
+{% block body %}
+<section id="section__four" class="menu">
+    <h1>MENU DAS MELHORES PIZZAS</h1>
+    <div class="pizza__container__box">
+    {% for pizza in pizzas %}
+        <form action="/menu/" method="POST" class="card">
+        {% csrf_token %}
+            <div class="image"><img src="{{pizza.image_url}}" alt=""></div>
+            <div class="pizza__content">
+            <input type="text" name="sno" id="sno" value="{{pizza.sno}}" style="display:none;">
+            <input type="text" name="user_logedin" id="user_logedin" value="{% if user.is_authenticated %}{{request.user}}{% endif %}" style="display:none;" >
+                <h2>{{pizza.Pizza_name}}</h2>
+                <p>{{pizza.Pizza_desc}}</p>
+                <div class="price__order__btn__box">
+                    <h4>R$ {{pizza.Pizza_price}}0</h4>
+                    {% if firstobjectofcurrentuser.order_confirmed == False or not firstobjectofcurrentuser%}
+                        <button type="submit">Peça agora</button>
+                    {% else %}
+                        <button type="button" class="btn__none">Order Now</button>
+                    {% endif %}
+                </div>
+            </div>
+        </form>
+    {% endfor %}
+    </div>
+    <div class="warning_no_order">
+        <div class="cross3"><i class="fas fa-times closeMenuWarning"></i></div>
+        <h1>O seu pedido está pendente!</h1>
+        <h1>Após a entrega deste pedido pendente,</h1>
+        <h1>você pode fazer outro pedido!</h1>
+    </div>
+</section>
+
+<script>
+const btnNone = document.querySelectorAll(".btn__none");
+const closeMenuWarning = document.querySelector(".closeMenuWarning");
+const warningNoOrder = document.querySelector(".warning_no_order");
+btnNone.forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    warningNoOrder.style.display = "block";
+  });
+});
+closeMenuWarning.addEventListener("click", function() {
+  warningNoOrder.style.display = "none";
+});
+</script>
+{% endblock body %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Página Inicial{% endblock title %}
+{% block active4 %}active{% endblock active4 %}
+{% block body %}
+<section id="contact">
+    <h1>Entre em Contato Conosco</h1>
+    <div class="form__contact">
+        <form action="/contact/" method="POST">
+        {% csrf_token %}
+            <div>
+                <label for="query_details">Dúvida:</label>
+                <textarea name="query_details" id="query_details" cols="30" rows="10"></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</section>
+{% endblock body %}

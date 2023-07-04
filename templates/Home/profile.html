@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block body %}
+<section id="profile">
+    <div class="profile__contaier">
+        <div class="image__box__profile">
+            <div class="image__container">
+                <img src="/media/{{profile_iamge_display_url}}" alt="">
+                <div class="edit_image"><i class="fas fa-edit"></i><div>
+                </div>
+            </div>
+        </div> 
+        <div class="details">
+                <h4>{% if request.user.first_name %}{{request.user.first_name}} {{request.user.last_name}} (Full Name){% endif %}</h4>
+                <h4>{% if request.user.username %}{{request.user.username}} (Username){% endif %}</h4>
+                <h4>{% if request.user.email %}{{request.user.email}} (Email){% endif %}</h4>
+                <form action="/logout/" method="POST">
+                {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
+            <div class="address">
+                <div>
+                    <h4>(Endereço)</h4>
+                    <p>{{address_display}}  <i class="fas fa-edit address_edit"></i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% comment %} Pedidos recentes com horário {% endcomment %}
+<!-- Image Uplaod Form -->
+<div class="upload_image_form">
+    <form action="/profile/" method="POST" class="image_form" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="cross"><i class="fas fa-times closeImageForm"></i></div>
+       <div class="image_btns">
+             <h3>Envie a sua imagem de perfil!</h3>
+            {{form.as_p}}
+            <button type="submit">Enviar</button>
+       </div>
+    </form>
+</div>
+<!-- Image Uplaod Form -->
+<!-- Address Uplaod Form -->
+<div class="address_upload">
+    <form action="/address/" method="POST">
+    {% csrf_token %}
+        <div class="cross2"><i class="fas fa-times closeAddressForm"></i></div>
+        <h1>Envie seu endereço!</h1>
+        <textarea name="address_area" id="address_area" cols="50" rows="3"></textarea>
+        <div class="btn__address">
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+</div>
+<!-- Address Uplaod Form -->
+
+
+</section>
+{% endblock body %}
