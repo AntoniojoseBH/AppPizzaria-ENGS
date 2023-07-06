@@ -73,7 +73,7 @@ def orders(request):
         }
         return render(request, "Home/orders.html", context)
     except Exception:
-        messages.success(request, "Login To Continue!")
+        messages.success(request, "Faça Login para continuar!")
         return redirect("/log_in/")
 
 
@@ -180,10 +180,10 @@ def menu(request):
             return render(request, "Home/menu.html", context)
         else:
             # msg
-            messages.success(request, "Login To Continue!")
+            messages.success(request, "Faça Login para continuar!")
             return redirect("/log_in/")
     except Exception:
-        messages.success(request, "Login To Continue!")
+        messages.success(request, "Faça Login para continuar!")
         return redirect("/log_in/")
 
 def signup(request):
@@ -204,13 +204,13 @@ def signup(request):
 
         if pass1 == pass2:
             if User.objects.filter(username=user_name).exists() and User.objects.filter(email=user_email).exists():
-                messages.warning(request, "Username and Email are already taken")
+                messages.warning(request, "Usuário e email já utilizados!")
 
             elif User.objects.filter(username=user_name).exists():
-                messages.warning(request, "Username already taken")
+                messages.warning(request, "Usuário já utilizado")
 
             elif User.objects.filter(email=user_email).exists():
-                messages.warning(request, "Email already taken")
+                messages.warning(request, "Email já utilizado")
             else:
                 user = User.objects.create_user(user_name, user_email, pass1)
                 user.first_name = f_name
@@ -222,11 +222,11 @@ def signup(request):
                     messages.success(request, "Successfully Logged In !")
                     return redirect("/")
                 else:
-                    messages.success(request, "Invalid Sign Up Inputs Given !")
+                    messages.success(request, "Dados inválidos para cadastramento !")
                     
 
         else:
-            messages.warning(request, "Create Password and Confirmed Password Don't Match")
+            messages.warning(request, "Senha criada e Senha de confirmação diferentes !")
 
     return render(request, "Home/signup.html", context)
     
@@ -245,14 +245,14 @@ def log_in(request):
             user_login = auth.authenticate(username=user_name_, password=pass_)
             if user_login is not None:
                 auth.login(request, user_login)
-                messages.success(request, "Successfully Logged In !")
+                messages.success(request, "Login realizado com sucesso!")
                 return redirect("/")
             else:
-                messages.warning(request, "Sign up First")
+                messages.warning(request, "Efetue Login primeiro")
 
         return render(request, "Home/login.html", context)
     else:
-        messages.success(request, "You Are Loged In Already!")
+        messages.success(request, "Você já efetuou Login!")
         return redirect("/")
 
 def logout(request):
@@ -304,7 +304,7 @@ def profile(request):
             if address: 
                 address_display = address.address
             else:
-                address_display = "No Address, Please Add!"
+                address_display = "Adicione seu endereço!"
 
             context = {
                 'profile_iamge_display_url':profile_iamge_display_url,
