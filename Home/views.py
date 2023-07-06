@@ -328,10 +328,10 @@ def address(request):
         if not Address.objects.filter(User=current_user).first():    
             address = Address(User=current_user, address=address_)
             address.save()
-            messages.success(request, "Address Saved !")
+            messages.success(request, "Endereço salvo !")
         else:
             address = Address.objects.filter(User=current_user).update(address=address_)
-            messages.success(request, "Address Updated !")
+            messages.success(request, "Endereço atualizado !")
             
         return redirect("/profile/")
 
