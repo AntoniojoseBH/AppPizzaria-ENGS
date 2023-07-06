@@ -153,7 +153,7 @@ def menu(request):
                     p_price = pizza_.Pizza_price
                     
                     if not Address.objects.filter(User=request.user):
-                        messages.success(request, "Please provide a address !")
+                        messages.success(request, "Adicione um endereço!")
                         return redirect("/profile/")
                     else:
                         """to handle quantity in menu"""
@@ -219,7 +219,7 @@ def signup(request):
                 user_login = auth.authenticate(username=user_name, password=pass1)
                 if user_login is not None:
                     auth.login(request, user_login)
-                    messages.success(request, "Successfully Logged In !")
+                    messages.success(request, "Logado com sucesso !")
                     return redirect("/")
                 else:
                     messages.success(request, "Dados inválidos para cadastramento !")
